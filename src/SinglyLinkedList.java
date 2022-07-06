@@ -1,6 +1,3 @@
-import javax.swing.*;
-import javax.swing.text.DefaultStyledDocument;
-
 public class SinglyLinkedList<E> {
     Node head;
 
