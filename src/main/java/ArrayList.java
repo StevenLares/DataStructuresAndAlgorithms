@@ -1,3 +1,5 @@
+package main.java;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -5,25 +7,26 @@ public class ArrayList<E> {
     private E[] array;
     private int arrayListIterator;
 
-    public ArrayList(Class<E> arrayType){
+    public ArrayList(E e) {
         this.arrayListIterator = 1;
 
-        //@SuppressWarnings("unchecked")
-        this.array = (E[]) Array.newInstance(arrayType, 1);
+        // @SuppressWarnings("unchecked")
+        this.array = (E[]) new Object[1];
+        array[0] = e;
 
     }
 
     /*
-    * Expected Input:
-    * Data of type E, which is specified at the time of object creation
-    * AND assumes arrayListIterator started at 1 at the time of ArrayList creation.
+     * Expected Input:
+     * Data of type E, which is specified at the time of object creation
+     * AND assumes arrayListIterator started at 1 at the time of main.java.ArrayList creation.
 
-    * * Expected Output:
-    * adds data to array of type E AND increments arrayListIterator by 1
-    * AND doubles underlying array if arrayListIterator is finally equal to array.length
-    * */
-    public void add(E data){
-        if(arrayListIterator == array.length){
+     * * Expected Output:
+     * adds data to array of type E AND increments arrayListIterator by 1
+     * AND doubles underlying array if arrayListIterator is finally equal to array.length
+     * */
+    public void add(E data) {
+        if (arrayListIterator == array.length) {
             duplicateArray();
         }
         array[arrayListIterator - 1] = data;
@@ -33,7 +36,7 @@ public class ArrayList<E> {
     /*
      * Expected Input: Data of type E, which is specified at the time of object creation
      * AND Positive Index, that is less than or equal to arrayListIterator (the arraylist length from user perspective)
-     * AND assumes arrayListIterator started at 1 at the time of ArrayList creation.
+     * AND assumes arrayListIterator started at 1 at the time of main.java.ArrayList creation.
      *
      * Expected Output:
      * Overwrites the underlying array with input data E at the given input index
@@ -41,18 +44,16 @@ public class ArrayList<E> {
      * AND doubles underlying array if arrayListIterator is finally equal to array.length
      *
      * */
-    public void add(E data, int index){
-        if(validIndex(index) == false){
+    public void add(E data, int index) {
+        if (validIndex(index) == false) {
             throw new IndexOutOfBoundsException();
 
-        }
-        else if (array[index] != null){
+        } else if (array[index] != null) {
             throw new IndexOutOfBoundsException(); //TODO: actually create a new exception here
-        }
-        else {
+        } else {
             array[index] = data;
             arrayListIterator++;
-            if(arrayListIterator == array.length){
+            if (arrayListIterator == array.length) {
                 duplicateArray();
             }
         }
@@ -64,11 +65,10 @@ public class ArrayList<E> {
      * Expected Output: Data of Type E from the underlying array
      *
      * */
-    public E get(int index){
-        if(validIndex(index) == false){
+    public E get(int index) {
+        if (validIndex(index) == false) {
             throw new IndexOutOfBoundsException();
-        }
-        else return array[index];
+        } else return array[index];
     }
 
     /*
@@ -77,11 +77,10 @@ public class ArrayList<E> {
      * AND it does not increment arrayListIterator by 1 AND does not double the array size to increase space. In other words, this is purely for overwriting
      * array elements.
      * */
-    public void set(E data, int index){
-        if(validIndex(index) == false){
+    public void set(E data, int index) {
+        if (validIndex(index) == false) {
             throw new IndexOutOfBoundsException();
-        }
-        else array[index] = data;
+        } else array[index] = data;
     }
 
 
@@ -90,10 +89,9 @@ public class ArrayList<E> {
      * Expected Output:
      * */
     private boolean validIndex(int index) {
-        if(index > array.length - 1 || index > arrayListIterator - 1) {
+        if (index > array.length - 1 || index > arrayListIterator - 1) {
             return false;
-        }
-        else return true;
+        } else return true;
     }
 
 
@@ -109,7 +107,7 @@ public class ArrayList<E> {
 
         //this is an implementation that is more manual
         E[] temp = (E[]) Array.newInstance(array.getClass(), array.length * 2);
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             temp[i] = array[i];
         }
         this.array = temp;
@@ -120,11 +118,32 @@ public class ArrayList<E> {
 
     }
 
-    /*
-    * Helper function to help with testing
-    * */
-    public E[] getArray(){
-        return array;
+
+    //TODO: Add this helper function
+    @Override
+    public String toString() {
+        String array_contents;
+
+        if (arrayListIterator <= 0) {
+            return "[]";
+        } else {
+            array_contents = array[0].toString();
+            for (int i = 1; i < arrayListIterator; i++) {
+                array_contents = array_contents + ", " + array[i].toString();
+
+            }
+            array_contents = "[" + array_contents + "]";
+
+        }
+
+        return array_contents;
+
+
     }
+
+
+
+
+
 
 }

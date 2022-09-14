@@ -1,3 +1,5 @@
+package main.java;
+
 public class SinglyLinkedList<E> {
     Node head;
 

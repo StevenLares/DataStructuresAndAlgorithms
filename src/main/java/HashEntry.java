@@ -1,3 +1,5 @@
+package main.java;
+
 public class HashEntry {
     private String key;
     private int value;

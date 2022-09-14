@@ -1,4 +1,4 @@
-/*
+package main.java;/*
 * Stores the search algorithms that can be used for
 * integer arrays, trees, graphs, and heaps.
 *

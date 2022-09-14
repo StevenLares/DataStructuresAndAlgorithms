@@ -1,8 +1,8 @@
-/*
-* This implementation depends on the SinglyLinkedList class
+package main.java;/*
+* This implementation depends on the main.java.SinglyLinkedList class
 * */
 
-import Interfaces.StackImpl;
+import main.java.Interfaces.StackImpl;
 
 public class Stack_1<E> implements StackImpl<E> {
 

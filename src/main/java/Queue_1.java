@@ -1,8 +1,8 @@
-/*
- * This implementation depends on the SinglyLinkedList class
+package main.java;/*
+ * This implementation depends on the main.java.SinglyLinkedList class
  * */
 
-import Interfaces.QueueImpl;
+import main.java.Interfaces.QueueImpl;
 
 public class Queue_1<E> implements QueueImpl<E> {
     private SinglyLinkedList sLinkedList;
