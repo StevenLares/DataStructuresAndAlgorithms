@@ -3,24 +3,44 @@ import java.util.Arrays;
 
 public class ArrayList<E> {
     private E[] array;
-    private int listLen;
+    private int arrayListIterator;
 
     public ArrayList(Class<E> arrayType){
-        this.listLen = 1;
+        this.arrayListIterator = 1;
 
         //@SuppressWarnings("unchecked")
         this.array = (E[]) Array.newInstance(arrayType, 1);
 
     }
 
+    /*
+    * Expected Input:
+    * Data of type E, which is specified at the time of object creation
+    * AND assumes arrayListIterator started at 1 at the time of ArrayList creation.
+
+    * * Expected Output:
+    * adds data to array of type E AND increments arrayListIterator by 1
+    * AND doubles underlying array if arrayListIterator is finally equal to array.length
+    * */
     public void add(E data){
-        if(listLen == array.length){
+        if(arrayListIterator == array.length){
             duplicateArray();
         }
-        array[listLen - 1] = data;
-        listLen++;
+        array[arrayListIterator - 1] = data;
+        arrayListIterator++;
     }
 
+    /*
+     * Expected Input: Data of type E, which is specified at the time of object creation
+     * AND Positive Index, that is less than or equal to arrayListIterator (the arraylist length from user perspective)
+     * AND assumes arrayListIterator started at 1 at the time of ArrayList creation.
+     *
+     * Expected Output:
+     * Overwrites the underlying array with input data E at the given input index
+     * AND increments arrayListIterator by 1
+     * AND doubles underlying array if arrayListIterator is finally equal to array.length
+
+     * */
     public void add(E data, int index){
         if(validIndex(index) == false){
             throw new IndexOutOfBoundsException();
@@ -31,13 +51,17 @@ public class ArrayList<E> {
         }
         else {
             array[index] = data;
-            listLen++;
-            if(listLen == array.length){
+            arrayListIterator++;
+            if(arrayListIterator == array.length){
                 duplicateArray();
             }
         }
     }
 
+    /*
+     * Expected Input:
+     * Expected Output:
+     * */
     public E get(int index){
         if(validIndex(index) == false){
             throw new IndexOutOfBoundsException();
@@ -45,6 +69,10 @@ public class ArrayList<E> {
         else return array[index];
     }
 
+    /*
+     * Expected Input:
+     * Expected Output:
+     * */
     public void set(E data, int index){
         if(validIndex(index) == false){
             throw new IndexOutOfBoundsException();
@@ -52,12 +80,23 @@ public class ArrayList<E> {
         else array[index] = data;
     }
 
+
+    /*
+     * Expected Input:
+     * Expected Output:
+     * */
     private boolean validIndex(int index) {
-        if(index > array.length - 1 || index > listLen - 1) {
+        if(index > array.length - 1 || index > arrayListIterator - 1) {
             return false;
         }
         else return true;
     }
+
+
+    /*
+     * Expected Input:
+     * Expected Output:
+     * */
 
     private void duplicateArray() {
 
@@ -72,7 +111,7 @@ public class ArrayList<E> {
         this.array = temp;
 
         //this should be run regardless of which implementation you use
-        listLen++;
+        arrayListIterator++;
 
 
     }
