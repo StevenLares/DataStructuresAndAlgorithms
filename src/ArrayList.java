@@ -39,7 +39,7 @@ public class ArrayList<E> {
      * Overwrites the underlying array with input data E at the given input index
      * AND increments arrayListIterator by 1
      * AND doubles underlying array if arrayListIterator is finally equal to array.length
-
+     *
      * */
     public void add(E data, int index){
         if(validIndex(index) == false){
@@ -59,8 +59,10 @@ public class ArrayList<E> {
     }
 
     /*
-     * Expected Input:
-     * Expected Output:
+     * Expected Input: Positive integer (primitive type) starting from 0 which should be no larger than the array size
+     *
+     * Expected Output: Data of Type E from the underlying array
+     *
      * */
     public E get(int index){
         if(validIndex(index) == false){
@@ -70,8 +72,10 @@ public class ArrayList<E> {
     }
 
     /*
-     * Expected Input:
-     * Expected Output:
+     * Expected Input: Data of Type E, Positive integer (primitive type) starting from 0 which should be no larger than the array size
+     * Expected Output: Overwrites the underlying array with input data E at the given input index
+     * AND it does not increment arrayListIterator by 1 AND does not double the array size to increase space. In other words, this is purely for overwriting
+     * array elements.
      * */
     public void set(E data, int index){
         if(validIndex(index) == false){
@@ -114,6 +118,13 @@ public class ArrayList<E> {
         arrayListIterator++;
 
 
+    }
+
+    /*
+    * Helper function to help with testing
+    * */
+    public E[] getArray(){
+        return array;
     }
 
 }
