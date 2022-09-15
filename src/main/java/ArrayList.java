@@ -119,7 +119,7 @@ public class ArrayList<E> {
     }
 
 
-    //TODO: Add this helper function
+
     @Override
     public String toString() {
         String array_contents;

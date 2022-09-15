@@ -1,13 +1,9 @@
-package main.java;/*
-* Stores the search algorithms that can be used for
-* integer arrays, trees, graphs, and heaps.
-*
-* */
+package main.java;
 
-public class SearchAlgorithms {
+public class BinarySearchAlgorithms {
 
-    //Used to facilitate recursive version of the algorithm.
-    //This is public facing
+    //Public facing method used to facilitate recursive version of the algorithm.
+    //checks for valid inputs
     public int RecursiveBinarySearch(int[] array, int x){
         if(array.length <= 0) {
             return -1; //not valid
@@ -16,8 +12,8 @@ public class SearchAlgorithms {
     }
 
 
-    //recursive version of the algorithm
-    //this is the version that runs privately
+    //
+    //
     private int RecursiveBinarySearch(int[] array, int x, int start, int end){
         if(start ==end) {
             if (array[start] == x) {
@@ -38,6 +34,12 @@ public class SearchAlgorithms {
     }
 
     //iterative version
+    //meant as an alternative to the recursive version
+    /*
+     * Expected Input: Data of type E
+     * Expected Output: Initializes the head with data, if
+     * it became null because of removeHead().
+     * */
     public int IterativeBinarySearch(int[] array, int x) {
         int mid = 0;
         int start = 0;

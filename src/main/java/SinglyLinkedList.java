@@ -7,6 +7,11 @@ public class SinglyLinkedList<E> {
         this.head = new Node(data);
     }
 
+    /*
+     * Expected Input: Data of type E
+     * Expected Output: Appends a Node to the end (tail) of the SinglyLinkedList (ie the Nodes
+     * linked together starting from the head)
+     * */
     public void AppendToTail(E data){
         Node<E> end = new Node<>(data);
         Node n = this.head;
@@ -16,6 +21,11 @@ public class SinglyLinkedList<E> {
         n.next = end;
     }
 
+    /*
+     * Expected Input: Data of type E
+     * Expected Output: Prepends a Node to the beginning (head) of the SinglyLinkedList (ie the Nodes
+     * linked together starting from the head)
+     * */
     public void PrependToHead(E data){
         Node newHead = new Node(data);
         newHead.next = head;
@@ -23,7 +33,11 @@ public class SinglyLinkedList<E> {
     }
 
 
-
+    /*
+     * Expected Input: Positive integer (starting from 0)
+     * which must be less than the length of the SinglyLinkedList
+     * Expected Output: Returns data of type E at the input index
+     * */
     public E get(int index){
         int i = 0;
         Node n = this.head;
@@ -44,7 +58,13 @@ public class SinglyLinkedList<E> {
 
     }
 
-
+    /*
+     * Expected Input: Positive integer (starting from 0)
+     * which must be less than the length of the SinglyLinkedList
+     * AND data of type E
+     * Expected Output: Inserts a new node into the SinglyLinkedList between index-1
+     * and index+1. It effectively shifts both sides (of index-1 and index +1) to make room
+     * */
     public void add(int index, E data){
         int i = 0;
         Node n = this.head;
@@ -67,6 +87,14 @@ public class SinglyLinkedList<E> {
         }
     }
 
+
+    /*
+     * Expected Input: Positive integer (starting from 0)
+     * which must be less than the length of the SinglyLinkedList
+     * Expected Output: Removes the node at the given index. If the node linked to another
+     * node, then that node (and the nodes linked together after it) are shifted to the left
+     * to make up for the gap made by node deletion.
+     * */
     public void remove(int index){
         int i = 0;
         Node n = this.head;
@@ -90,6 +118,12 @@ public class SinglyLinkedList<E> {
 
     }
 
+
+    /*
+     * Expected Input: Data of type E
+     * Expected Output: Initializes the head with data, if
+     * it became null because of removeHead().
+     * */
     public void initHead(E data){
         if(this.head.data == null){
             this.head.data = data;
@@ -98,7 +132,13 @@ public class SinglyLinkedList<E> {
     }
 
 
-    //TODO: remove instances of this
+
+    /*
+     * Expected Input:
+     * Expected Output: Sets head to NULL if it has no neighbors,
+     * otherwise sets the neighbor to be the new head
+     * */
+    
     public void removeHead() {
         if (head.next != null){
             head = head.next;

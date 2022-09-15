@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import static java.util.Objects.hash;
 
+//TODO: Refactor to be String Key, E Value to be more general
 public class HashTable {
     private ArrayList<LinkedList> hashIndicies; //TODO: change this to custom built arraylist
 

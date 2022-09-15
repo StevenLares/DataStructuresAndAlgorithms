@@ -5,10 +5,32 @@ package main.java;/*
 public class driver_class {
 
     public static void main(String[] args){
-    //String str = new String("hello");
-    ArrayList<String> testArray = new ArrayList<String>("hello");
 
-    System.out.println(testArray.toString());
+        /*
+        // Testing Node class
+        Node<Integer> n = new Node<Integer>(5);
+        n.setData(6);
+        System.out.println(n.getData().toString());
+        */
+
+
+        /*
+        //Testing HashEntry class
+
+        HashEntry he = new HashEntry("Hello", 10);
+
+        System.out.println(he.getKey());
+        System.out.println(he.getValue());
+
+        he.setValue(1000);
+
+        System.out.println();
+        System.out.println(he.getKey());
+        System.out.println(he.getValue());
+
+        */
+
+
 
     }
 
