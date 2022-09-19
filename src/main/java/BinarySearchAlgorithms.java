@@ -2,6 +2,12 @@ package main.java;
 
 public class BinarySearchAlgorithms {
 
+
+
+    //Expected Input: Sorted integer array, and integer to search for
+    //Expected Output: Index of input integer if it is found in array,
+    //but if not found it will return -1.
+
     //Public facing method used to facilitate recursive version of the algorithm.
     //checks for valid inputs
     public int RecursiveBinarySearch(int[] array, int x){
@@ -12,8 +18,11 @@ public class BinarySearchAlgorithms {
     }
 
 
-    //
-    //
+    //Private method called by the public method of the same name
+    //Expected Input: Sorted integer array, and integer to search for.
+    // Integers start and end are adjusted each time it is called.
+    //Expected Output: Index of input integer if it is found in array,
+    //but if not found it will return -1.
     private int RecursiveBinarySearch(int[] array, int x, int start, int end){
         if(start ==end) {
             if (array[start] == x) {
@@ -33,13 +42,14 @@ public class BinarySearchAlgorithms {
 
     }
 
+
+
+    //Expected Input: Sorted integer array, and integer to search for
+    //Expected Output: Index of input integer if it is found in array,
+    //but if not found it will return -1.
+
     //iterative version
     //meant as an alternative to the recursive version
-    /*
-     * Expected Input: Data of type E
-     * Expected Output: Initializes the head with data, if
-     * it became null because of removeHead().
-     * */
     public int IterativeBinarySearch(int[] array, int x) {
         int mid = 0;
         int start = 0;

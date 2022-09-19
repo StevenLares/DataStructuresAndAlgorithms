@@ -1,11 +1,14 @@
 package main.java;
 
-//TODO: Refactor to be String Key, E Value to be more general
+
 /*
 * This class is a basic data structure for the HashTable data structure.
-* It holds a String key, and for simplicity, an int for Key (instead of generic type)
+* It holds a String key, and for simplicity, an int for Key (instead of generic type
+* For simplicity, it contains only one value per entry
 * I verified with driver code
 * */
+
+//TODO: Can this be moved into the HashTable code
 public class HashEntry {
     private final String key;
     private int value;

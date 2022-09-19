@@ -5,15 +5,16 @@ import java.util.LinkedList;
 
 import static java.util.Objects.hash;
 
-//TODO: Refactor to be String Key, E Value to be more general
+//TODO: Last class to add Expected Input/Output
 public class HashTable {
-    private ArrayList<LinkedList> hashIndicies; //TODO: change this to custom built arraylist
+    private ArrayList<LinkedList> hashIndicies;
 
     public HashTable(int arrayLength){
         if(arrayLength > 0){
             hashIndicies = new ArrayList<LinkedList>(arrayLength);
         } else throw new IndexOutOfBoundsException(); //TODO: write custom error handler
     }
+
 
     public HashTable(){
         hashIndicies = new ArrayList<LinkedList>(11);
@@ -28,7 +29,10 @@ public class HashTable {
     }
 
 
-
+    /*
+     * Expected Input: String to be used as a key
+     * Expected Output: Return true if key exists, false otherwise.
+     */
     public Boolean keyExists(String key){
         int index = compute(key);
 
@@ -51,9 +55,12 @@ public class HashTable {
 
 
 
+    /*
+     * Expected Input: String key, and int value to be associated with the key
+     * Expected Output: adds a key / value pair to the hashtable
+     * AND does not add if the key already exists
+     */
 
-    //this function adds a key / value pair to the hashtable.
-    //does not add if the key already exists
     public void add(String key, int value){
         HashEntry hashEntry = new HashEntry(key, value);
         int index = compute(key);
@@ -72,7 +79,13 @@ public class HashTable {
     }
 
 
-
+    /*
+     * Expected Input: String key, and int value to be associated with the key
+     * Expected Output: updates the int a key / value pair to the hashtable
+     * if the key already exists. If it does not exist, do nothing
+     * Does not account for case where keys collide on the HashTable:
+     * See http://math.oxford.emory.edu/site/cs171/collisionResolution/
+     */
     public void update(String key, int newVal){
         if(keyExists(key) == false){
             System.out.println("Sorry, this key does not exist in the hashtable./n There is nothing to update.");
@@ -94,7 +107,11 @@ public class HashTable {
 
 
 
-
+    /*
+     * Expected Input: String key
+     * Expected Output: Remove the HashEntry corresponding to the given KEY, if the key already exists.
+     * If it does not exist, do nothing
+     */
     public void remove(String key){
         if(keyExists(key) == false){
             System.out.println("Sorry, this key does not exist in the hashtable./n There is nothing to remove.");
@@ -117,8 +134,13 @@ public class HashTable {
 
 
 
-    //returns value given a key
-    //returns null if the key is not in the hashtable
+
+
+    /*
+     * Expected Input: String key
+     * Expected Output: Returns integer value given a key
+     * AND Returns null if the key is not in the hashtable
+     */
     public Integer getValue(String key){
         if(keyExists(key) == false){
             System.out.println("Sorry, this key does not exist in the hashtable./n There is no value to retrieve.");
@@ -136,6 +158,30 @@ public class HashTable {
         return null;
 
     }
+
+    private class HashEntry {
+        private final String key;
+        private int value;
+
+        private HashEntry(String key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        public String getKey() {
+            return this.key;
+        }
+
+        public int getValue() {
+            return this.value;
+        }
+
+        public void setValue(int newVal){
+            this.value = newVal;
+        }
+
+    }
+
 
 
 
