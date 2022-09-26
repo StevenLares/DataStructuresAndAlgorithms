@@ -1,7 +1,7 @@
 package main.java;
 
 public class SinglyLinkedList<E> {
-    Node head;
+    private Node head;
 
     public SinglyLinkedList(E data){
         this.head = new Node(data);
@@ -13,12 +13,15 @@ public class SinglyLinkedList<E> {
      * linked together starting from the head)
      * */
     public void AppendToTail(E data){
-        Node<E> end = new Node<>(data);
+        Node<E> end = new Node<E>(data);
         Node n = this.head;
-        while (n.next!= null){
+
+        while (n.next != null) {
             n = n.next;
         }
+
         n.next = end;
+
     }
 
     /*
@@ -39,21 +42,27 @@ public class SinglyLinkedList<E> {
      * Expected Output: Returns data of type E at the input index
      * */
     public E get(int index){
-        int i = 0;
-        Node n = this.head;
-
-        if(index == 0){
-            return (E) n.getData();
+        if (index < 0){
+            throw new IndexOutOfBoundsException();
         }
         else {
-            while (n.next != null && i != index) {
-                n = n.next;
-                i++;
-            }
-            if (i == index) {
-                return (E) n.getData();
-            } else throw new IndexOutOfBoundsException();
 
+            int i = 0;
+            Node n = this.head;
+
+            if(index == 0){
+                return (E) n.getData();
+            }
+            else {
+                while (n.next != null && i != index) {
+                    n = n.next;
+                    i++;
+                }
+                if (i == index) {
+                    return (E) n.getData();
+                } else throw new IndexOutOfBoundsException();
+
+            }
         }
 
     }
@@ -66,24 +75,30 @@ public class SinglyLinkedList<E> {
      * and index+1. It effectively shifts both sides (of index-1 and index +1) to make room
      * */
     public void add(int index, E data){
-        int i = 0;
-        Node n = this.head;
-        if(index == 0){
-            PrependToHead(data);
+        if (index < 0){
+            throw new IndexOutOfBoundsException();
         }
         else {
-            while (n.next != null && i != index - 1) {
-                n = n.next;
-                i++;
-            }
 
-            if (i == index - 1) {
-                Node insert = new Node(data);
-                Node left = n;
-                Node right = n.next;
-                left.next = insert;
-                insert.next = right;
-            } else throw new IndexOutOfBoundsException();
+            int i = 0;
+            Node n = this.head;
+            if(index == 0){
+                PrependToHead(data);
+            }
+            else {
+                while (n.next != null && i != index - 1) {
+                    n = n.next;
+                    i++;
+                }
+
+                if (i == index - 1) {
+                    Node insert = new Node(data);
+                    Node left = n;
+                    Node right = n.next;
+                    left.next = insert;
+                    insert.next = right;
+                } else throw new IndexOutOfBoundsException();
+            }
         }
     }
 
@@ -96,24 +111,30 @@ public class SinglyLinkedList<E> {
      * to make up for the gap made by node deletion.
      * */
     public void remove(int index){
-        int i = 0;
-        Node n = this.head;
-        if(index == 0){
-            removeHead();
+        if (index < 0){
+            throw new IndexOutOfBoundsException();
         }
         else {
 
-            while (n.next.next != null && i != index - 1) {
-                n = n.next;
-                i++;
+            int i = 0;
+            Node n = this.head;
+            if(index == 0){
+                removeHead();
             }
-            if (i == index - 1) {
-                Node toRemove = n.next;
-                Node adjNode = toRemove.next;
-                n.next = adjNode;
-                toRemove.next = null;
-            } else throw new IndexOutOfBoundsException();
+            else {
 
+                while (n.next.next != null && i != index - 1) {
+                    n = n.next;
+                    i++;
+                }
+                if (i == index - 1) {
+                    Node toRemove = n.next;
+                    Node adjNode = toRemove.next;
+                    n.next = adjNode;
+                    toRemove.next = null;
+                } else throw new IndexOutOfBoundsException();
+
+            }
         }
 
     }
@@ -122,10 +143,10 @@ public class SinglyLinkedList<E> {
     /*
      * Expected Input: Data of type E
      * Expected Output: Initializes the head with data, if
-     * it became null because of removeHead().
+     * it became null because of removeHead() or because it was instantiated that way.
      * */
     public void initHead(E data){
-        if(this.head.data == null){
+        if(this.head.data == null && data != null){
             this.head.data = data;
         }
         else throw new IndexOutOfBoundsException(); //TODO: Create new exception type, for head already initialized
@@ -139,10 +160,43 @@ public class SinglyLinkedList<E> {
      * otherwise sets the neighbor to be the new head
      * */
     
-    public void removeHead() {
+    private void removeHead() {
         if (head.next != null){
             head = head.next;
         }
         else head.setData(null);
     }
+
+
+    @Override
+    public String toString(){
+
+        String linkedListContents;
+        Node n = this.head;
+
+
+        if(n.getData() == null){
+            linkedListContents = "NULL";
+        }
+        else {
+            linkedListContents = n.getData().toString();
+        }
+
+
+        //iterate through all nodes after head is evaluated
+        while (n.next!= null){
+            if(n.next.getData() == null){
+                linkedListContents = linkedListContents + ", NULL";
+            }
+            else {
+                linkedListContents = linkedListContents + ", " + n.next.getData().toString();
+            }
+            n = n.next;
+        }
+
+
+        return "[" + linkedListContents + "]";
+    }
+
+
 }

@@ -69,7 +69,7 @@ public class ArrayList<E> {
      * Expected Output:
      * */
     private boolean validIndex(int index) {
-        if (index > array.length - 1 || index > arrayListIterator - 1) {
+        if (index > array.length - 1 || index > arrayListIterator - 1 || index > array.length - 1 || index < 0) {
             return false;
         } else return true;
     }

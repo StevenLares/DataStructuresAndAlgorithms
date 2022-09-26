@@ -101,16 +101,23 @@ class ArrayListTest {
 
     @Test
     void set_OutOfBounds() {
-        ArrayList<Integer> digits = new ArrayList<Integer>(5);
-        digits.add(3);
-        digits.add(100);
+        ArrayList<Integer> digits = new ArrayList<Integer>(-50);
+        digits.add(78);
 
-
-
+        //User trying to access array space that doesn't exist internally
         assertThrows(IndexOutOfBoundsException.class,
-                () -> digits.set(9330, 34)
+                () -> digits.set(4,34)
         );
 
+        //internal array exists, but not visible to user
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> digits.set(4, 3)
+        );
+
+        //negative index
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> digits.set(4, -1)
+        );
 
     }
 
@@ -154,6 +161,11 @@ class ArrayListTest {
         //internal array exists, but not visible to user
         assertThrows(IndexOutOfBoundsException.class,
                 () -> digits.get(3)
+        );
+
+        //negative index
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> digits.get(-1)
         );
 
 

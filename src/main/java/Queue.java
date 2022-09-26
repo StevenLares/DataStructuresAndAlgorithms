@@ -27,7 +27,7 @@ public class Queue<E> implements QueueImpl<E> {
      * */
     @Override
     public void remove() {
-        sLinkedList.removeHead();
+        sLinkedList.remove(0);
 
     }
 

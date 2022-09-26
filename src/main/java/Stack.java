@@ -23,7 +23,7 @@ public class Stack<E> implements StackImpl<E> {
     @Override
     public E pop() {
         E data = (E) sLinkedList.get(0);
-        sLinkedList.removeHead();
+        sLinkedList.remove(0);
         return data;
     }
 
