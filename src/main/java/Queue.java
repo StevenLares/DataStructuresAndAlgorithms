@@ -12,7 +12,7 @@ public class Queue<E> implements QueueImpl<E> {
     }
 
     /*
-     * Expected Input:
+     * Expected Input: Data of Type E
      * Expected Output: Appends data of type E to the end of the queue
      * */
     @Override
@@ -39,6 +39,7 @@ public class Queue<E> implements QueueImpl<E> {
     @Override
     public E peek() {
         return (E) sLinkedList.get(0);
+
     }
 
     /*
@@ -47,6 +48,12 @@ public class Queue<E> implements QueueImpl<E> {
      * */
     @Override
     public boolean isEmpty() {
-        return sLinkedList.get(0) == null;
+        return sLinkedList.get(0) == null && sLinkedList.length() == 1;
+    }
+
+
+    @Override
+    public String toString(){
+        return sLinkedList.toString();
     }
 }

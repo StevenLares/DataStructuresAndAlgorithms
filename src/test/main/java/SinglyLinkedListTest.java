@@ -277,6 +277,34 @@ class SinglyLinkedListTest {
 
     }
 
+    @Test
+    void length_nulls(){
+        SinglyLinkedList<Integer> s = new SinglyLinkedList<Integer>(null);
+        s.AppendToTail(null);
+
+        assertEquals(2, s.length());
+
+    }
+
+    @Test
+    void length_oneEntry(){
+        SinglyLinkedList<Integer> s = new SinglyLinkedList<Integer>(3);
+        assertEquals(1, s.length());
+
+    }
+
+    @Test
+    void length_threeEntries(){
+        SinglyLinkedList<Integer> s = new SinglyLinkedList<Integer>(3);
+        s.AppendToTail(6);
+        s.AppendToTail(-86);
+        s.AppendToTail(41);
+        s.remove(3);
+
+        assertEquals(3, s.length());
+
+    }
+
 
 
 }

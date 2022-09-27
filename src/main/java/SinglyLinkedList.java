@@ -149,7 +149,7 @@ public class SinglyLinkedList<E> {
         if(this.head.data == null && data != null){
             this.head.data = data;
         }
-        else throw new IndexOutOfBoundsException(); //TODO: Create new exception type, for head already initialized
+        else throw new IndexOutOfBoundsException();
     }
 
 
@@ -198,5 +198,19 @@ public class SinglyLinkedList<E> {
         return "[" + linkedListContents + "]";
     }
 
+
+    public int length() {
+
+        int length = 1;
+        Node n = this.head;
+
+        while (n.next != null) {
+            n = n.next;
+            length++;
+        }
+
+        return length;
+
+    }
 
 }

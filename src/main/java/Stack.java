@@ -10,6 +10,7 @@ public class Stack<E> implements StackImpl<E> {
 
     public Stack(E data){
         sLinkedList = new SinglyLinkedList(data);
+
     }
 
     /*
@@ -47,6 +48,7 @@ public class Stack<E> implements StackImpl<E> {
     @Override
     public void push(E data) {
         sLinkedList.PrependToHead(data);
+
     }
 
 
@@ -56,6 +58,16 @@ public class Stack<E> implements StackImpl<E> {
      * */
     @Override
     public boolean isEmpty() {
-        return sLinkedList.get(0) == null;
+        return sLinkedList.get(0) == null && sLinkedList.length() == 1;
+
     }
+
+    @Override
+    public String toString(){
+        return sLinkedList.toString();
+    }
+
+
+
+
 }

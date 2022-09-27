@@ -1,5 +1,8 @@
 package main.java;
 
+//TODO: Consider refactoring this to be an array of generic Type E
+//you would need to extend comparator/comparable
+
 public class BinarySearchAlgorithms {
 
 

@@ -5,14 +5,15 @@ import java.util.LinkedList;
 
 import static java.util.Objects.hash;
 
-//TODO: Last class to add Expected Input/Output
+//TODO: Consider refactoring this to be an array of generic Type E
+
 public class HashTable {
     private ArrayList<LinkedList> hashIndicies;
 
     public HashTable(int arrayLength){
         if(arrayLength > 0){
             hashIndicies = new ArrayList<LinkedList>(arrayLength);
-        } else throw new IndexOutOfBoundsException(); //TODO: write custom error handler
+        } else throw new IndexOutOfBoundsException();
     }
 
 
