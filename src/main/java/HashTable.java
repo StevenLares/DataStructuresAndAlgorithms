@@ -1,5 +1,6 @@
 package main.java;
 
+import main.java.Exceptions.keyDoesntExistException;
 import main.java.Exceptions.keyExistsException;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class HashTable {
      * Expected Output: updates the int a key / value pair to the hashtable
      * if the key already exists. If it does not exist, do nothing
      */
-    public void update(String key, int newVal){
+    public void update(String key, int newVal) throws keyDoesntExistException{
         HashEntry hashEntry = new HashEntry(key, newVal);
         int index = compute(key);
 
@@ -99,7 +100,7 @@ public class HashTable {
             hashIndicies.set(index, hashEntry);
         }
         else {
-            System.out.println("Sorry, this key does not exist in the hashtable./n " +
+            throw new keyDoesntExistException("Sorry, this key does not exist in the hashtable./n " +
                     "There is nothing to update.");
         }
 
@@ -112,7 +113,7 @@ public class HashTable {
      * Expected Output: Remove the HashEntry corresponding to the given KEY, if the key already exists.
      * If it does not exist, do nothing
      */
-    public void remove(String key){
+    public void remove(String key) throws keyDoesntExistException{
         int index = compute(key);
 
 
@@ -120,7 +121,7 @@ public class HashTable {
             hashIndicies.set(index, null);
         }
         else {
-            System.out.println("Sorry, this key does not exist in the hashtable./n " +
+            throw new keyDoesntExistException("Sorry, this key does not exist in the hashtable./n " +
                     "There is nothing to remove.");
         }
 
@@ -137,14 +138,14 @@ public class HashTable {
      * Expected Output: Returns integer value given a key
      * AND Returns null if the key is not in the hashtable
      */
-    public int getValue(String key){
+    public int getValue(String key) throws keyDoesntExistException{
         int index = compute(key);
 
         if(keyExists(key)){
             return hashIndicies.get(index).getValue();
         }
         else {
-            throw new IndexOutOfBoundsException("Sorry, this key does not exist in the hashtable./n " +
+            throw new keyDoesntExistException("Sorry, this key does not exist in the hashtable./n " +
                     "There is nothing to retrieve.");
         }
 
