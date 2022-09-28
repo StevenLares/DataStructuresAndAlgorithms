@@ -1,6 +1,9 @@
 package main.java;
 
+import main.java.Exceptions.keyExistsException;
+
 import java.util.ArrayList;
+
 
 
 import static java.util.Objects.hash;
@@ -64,16 +67,19 @@ public class HashTable {
      * AND does not add if the key already exists
      */
 
-    public void add(String key, int value){
+    public void add(String key, int value) throws keyExistsException {
         HashEntry hashEntry = new HashEntry(key, value);
         int index = compute(key);
 
 
         if(keyExists(key)){
-            System.out.println("Sorry, this key already exists in the hashtable./n " +
+            throw new keyExistsException("Sorry, this key already exists in the hashtable./n " +
                     "Please use the update(), remove(), or getValue() methods with this key as a parameter.");
+
         }
-        else {hashIndicies.set(index, hashEntry);}
+        else {
+            hashIndicies.set(index, hashEntry);
+        }
 
 
     }
@@ -172,6 +178,11 @@ public class HashTable {
 
         public void setValue(int newVal){
             this.value = newVal;
+        }
+
+        @Override
+        public String toString(){
+            return "(" + this.key + " : " + this.value + ")";
         }
 
     }
