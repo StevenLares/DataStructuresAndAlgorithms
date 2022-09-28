@@ -53,7 +53,7 @@ public class HashTable {
         int index = compute(key);
 
         //the computed index has a non-null key value pair
-        if(hashIndicies.get(index) != null){
+        if(hashIndicies.get(index) != null && hashIndicies.get(index).getKey() == key){
             return true;
         }
 
