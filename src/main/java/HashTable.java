@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static java.util.Objects.hash;
 
-//TODO: Consider refactoring this to be an array of generic Type E
+
 /*
 * * Does not account for case where keys collide on the HashTable:
  *  See http://math.oxford.emory.edu/site/cs171/collisionResolution/
